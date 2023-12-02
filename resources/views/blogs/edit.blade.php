@@ -1,7 +1,7 @@
 <x-layout>
 
         <div class="m-20">
-            <form method="POST" action="/blogs/{{$blog-> id}}" enctype="multipart/form-data">
+            <form method="POST" action="/blogs/{{$blog->id}}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="mb-6">

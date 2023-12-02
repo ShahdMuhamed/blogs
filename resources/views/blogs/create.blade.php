@@ -1,7 +1,7 @@
 <x-layout>
 
     <div class="m-20">
-        <form method="POST" action="/blogs" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('blogs') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-6">

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('revied_id')->constrained('users')->onDelete('cascade');
             $table->string('subject');
             $table->longText('content');
             $table->longText('image')->nullable();

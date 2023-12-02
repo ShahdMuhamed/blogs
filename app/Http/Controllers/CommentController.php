@@ -10,11 +10,11 @@ session_start();
 class CommentController extends Controller
 {
     //
- public function index(){
+ public function index($blog_id){
 
     $comments = Comment::with('user')->get();
         return view('comments.index' , [
-           'comments' =>  Comment::filter(request(['blog_id']))->get()
+           'comments' =>  Comment::filter($blog_id)->get()
         ]);
 
     }

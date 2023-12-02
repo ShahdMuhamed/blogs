@@ -10,22 +10,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Blog extends Model
 {
     use HasFactory;
-protected $fillable = [
-    'id',
-    'subject',
-    'content',
-    'image',
-    'user_id'
-];
+    protected $fillable = [
+        'id',
+        'subject',
+        'content',
+        'image',
+        'user_id',
+    ];
 
 
-public function user(){
-    return $this->belongsTo(User::class , 'user_id');
-
-}
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 
     public function comment(){
-        return $this->hasMany(Comment::class , 'blog_id');
+        return $this->hasMany(Comment::class);
     }
 }
 
