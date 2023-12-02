@@ -17,42 +17,44 @@ use App\Http\Controllers\CommentController;
 |
 */
 Route::middleware('auth')->group(function () {
-// add comment
-Route::post('/comments' , [CommentController::class , 'store']);
+    Route::prefix('/blogs')
+    ->name('blogs.')
+    ->group(function () {
+        //show blog form
+        Route::get('/create' , [BlogController::class , 'create'])->middleware('makePost');
+
+        //add blog
+        Route::post('/' , [BlogController::class , 'store']);
 
 
-//show blog form
-Route::get('/blogs/create' , [BlogController::class , 'create'])->middleware('makePost');
-
-//add blog
-Route::post('/blogs' , [BlogController::class , 'store']);
+        //show edit form
+        Route::get('/{blog}/edit' , [BlogController::class, 'edit']);
 
 
-//show edit form
-Route::get('/blogs/{blog}/edit' , [BlogController::class, 'edit']);
+        //update
+        Route::put('/{blog}' , [BlogController::class, 'update']);
 
 
-//update
-Route::put('/blogs/{blog}' , [BlogController::class, 'update']);
+        //manage the posts
+        Route::get('/manage' , [BlogController::class , 'manage']);
 
+        Route::delete('/{blog}' , [BlogController::class, 'destroy']);
 
-//manage the posts
-Route::get('/blogs/manage' , [BlogController::class , 'manage']);
+        //get all comments
+        // /blog/{blog}/comments
+        Route::get('/{blog}/comments' , [CommentController::class , 'index']);
 
+        //delete comment
+        // /blog/{blog}/comments/{comment}
+        Route::delete('/{blog}/comments/{comment}' , [CommentController::class, 'destroy']);
 
-//delete post
-Route::delete('/blogs/{blog}' , [BlogController::class, 'destroy']);
-
-//get all comments
-Route::get('/comments' , [CommentController::class , 'index']);
-
-//delete comment
-Route::delete('/comments/{comment}' , [CommentController::class, 'destroy']);
-
+        // add comment
+        Route::post('/{blog}/comments' , [CommentController::class , 'store']);
+    });
 });
 
 //get all blogs
-Route::get('/blogs' , [BlogController::class , 'index']);
+Route::get('/blogs' , [BlogController::class , 'index'])->name('blog')
 
 //show register form
 Route::get('/register' , [UserController::class, 'create']);

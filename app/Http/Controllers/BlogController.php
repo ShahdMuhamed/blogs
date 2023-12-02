@@ -15,9 +15,7 @@ class BlogController extends Controller
     {
         $blogs = Blog::with('user')->get();
 
-        return view('blogs.index', compact('blogs')
-      
-    );
+        return view('blogs.index', compact('blogs'));
     }
 
 
@@ -60,7 +58,6 @@ class BlogController extends Controller
             [
                 'subject' => 'required',
                 'content' => 'required',
-
             ]
         );
         if ($request->hasFile('image')) {
@@ -78,7 +75,7 @@ class BlogController extends Controller
 
     public function destroy(Blog $blog){
         $blog->delete();
-        return redirect('/blogs');
+        return redirect(route('blog'));
     }
 }
 

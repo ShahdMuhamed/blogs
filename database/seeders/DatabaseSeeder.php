@@ -23,38 +23,28 @@ class DatabaseSeeder extends Seeder
 
 
         Blog::create([
-
-
             'subject' => 'post number one',
             'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam minima et illo reprehenderit quas possimus voluptas repudiandae cum expedita, eveniet aliquid, quam illum quaerat consequatur! Expedita ab consectetur tenetur delensiti?'
         ],);
-        Blog::create([
 
+        Blog::create([
             'subject' => 'post number two',
             'content' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam minima et illo reprehenderit quas possimus voluptas repudiandae cum expedita, eveniet aliquid, quam illum quaerat consequatur! Expedita ab consectetur tenetur delensiti?'
         ],);
 
 
         Comment::create([
-
-
             'blog_id' => 1,
             'comment_content' => 'perfect',
-
         ],);
         Comment::create([
-
-
             'blog_id' => 2,
             'comment_content' => 'perfect',
-
         ],);
+        
         Comment::create([
-
-
             'blog_id' => 2,
             'comment_content' => 'meya meyaa',
-
         ],);
     }
 }
